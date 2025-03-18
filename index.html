@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <title>Subserve (PTY) LTD</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -62,15 +63,33 @@
     <section>
         <h2>Contact Us</h2>
         <p>Get in touch with us for more information.</p>
-        <button onclick="showContactForm()">Contact Us</button>
+        <button onclick="sendEmail()">Contact Us</button>
         <div id="contact-form" class="hidden">
-            <form action="#" method="post">
+            <form action="#" method="post  >
                 <label for="name">Name:</label><br>
                 <input type="text" id="name" name="name"><br>
                 <label for="email">Email:</label><br>
                 <input type="email" id="email" name="email"><br>
                 <input type="submit" value="Submit">
             </form>
+
+
+            <script type="text/javascript">
+                function sendEmail() {
+                    Email.send({
+                        Host: "smtp.gmail.com",
+                        Username: "sender@email_address.com",
+                        Password: "Enter your password",
+                        To: 'receiver@email_address.com',
+                        From: "sender@email_address.com",
+                        Subject: "Sending Email using javascript",
+                        Body: "Well that was easy!!",
+                    })
+                        .then(function (message) {
+                            alert("mail sent successfully")
+                        });
+                }
+            </script>
         </div>
     </section>
 </main>
